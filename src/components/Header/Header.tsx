@@ -4,7 +4,7 @@ import CartContext, { undefinedCartContext } from "../../contexts/CartContext";
 
 const Header = () => {
 
-  const { setOpenCart } = useContext(CartContext) ?? undefinedCartContext;
+  const { setOpenCart, cartProducts } = useContext(CartContext) ?? undefinedCartContext;
 
   return (
     <HeaderContainer>
@@ -14,7 +14,7 @@ const Header = () => {
 
       <CartButtonContainer onClick={() => setOpenCart(previous => !previous)}>
         <CartIcon />
-        <p>0</p>
+        <p>{cartProducts.products.length}</p>
       </CartButtonContainer>
     </HeaderContainer>
   );

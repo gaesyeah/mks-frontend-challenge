@@ -1,11 +1,13 @@
 import { Index } from "./style";
 import Cart from "../components/Cart/Cart";
+import ProductsContainer from "../components/Products/ProductsContainer";
 
 const IndexPage = () => {
 
   return (
     <Index>
-      <Cart />
+      <ProductsContainer />
+      <Cart/>
     </Index>
   );
 };

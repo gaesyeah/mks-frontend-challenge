@@ -1,10 +1,17 @@
 /// <reference types="vite/client" />
 
-import React from "react";
-
-declare type CartState = {
-  openCart: boolean;
-  setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+export type Products = {
+  products: (
+    | {
+        id: number,
+        name: string,
+        brand: string,
+        description: string,
+        photo: string,
+        price: string,
+        createdAt: string,
+        updatedAt: string,
+      }
+    )[],
+  count: number,
 };
-
-export { CartState };

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import IndexPage from "./pages/indexPage"
+import IndexPage from "./pages/IndexPage"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import { CartProvider } from "./contexts/CartContext";

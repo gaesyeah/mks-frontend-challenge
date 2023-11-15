@@ -1,23 +1,37 @@
-import { ReactNode, createContext, useState } from 'react';
+import { Dispatch, FC, ReactNode, SetStateAction, createContext, useState } from 'react';
+import { Products } from '../vite-env';
 
-type CartState = {
-  openCart: boolean;
-  setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+type CartOpenedState = {
+  openCart: boolean,
+  setOpenCart: Dispatch<SetStateAction<boolean>>,
 };
+type CartProducts = Pick<Products, 'products'>;
+type CartState = {
+  cartProducts: CartProducts,
+  setCartProducts: Dispatch<SetStateAction<CartProducts>>,
+};
+type CartStateContext = CartOpenedState & CartState;
 
-const CartContext = createContext<CartState | undefined>(undefined);
+const CartContext = createContext<CartStateContext | undefined>(undefined);
 export default CartContext;
 
 const defaultOpenCartValue: boolean = false;
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }: { children: React.ReactNode }) => {
+const defaultCartProducts: Products = { products: [], count: 0 };
+export const CartProvider: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   
   const [openCart, setOpenCart] = useState<boolean>(defaultOpenCartValue);
+  const [cartProducts, setCartProducts] = useState<CartProducts>({ ...defaultCartProducts });
   
   return (
-    <CartContext.Provider value={{ openCart, setOpenCart }}>
+    <CartContext.Provider value={{ openCart, setOpenCart, cartProducts, setCartProducts }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-export const undefinedCartContext = { openCart: defaultOpenCartValue, setOpenCart: () => {} };
+export const undefinedCartContext: CartStateContext = { 
+  openCart: defaultOpenCartValue, 
+  setOpenCart: () => {}, 
+  cartProducts: { ...defaultCartProducts },
+  setCartProducts: () => {}
+};
