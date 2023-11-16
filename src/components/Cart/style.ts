@@ -4,8 +4,6 @@ import styled from "styled-components";
 export const CartContainer = styled.aside<{ openCart: boolean }>`
   background-color: ${color.blue};
   display: flex;
-  flex-direction: column;
-  align-items: center;
   position: fixed;
   top: 0px;
   transition: 300ms ease-out;
@@ -14,6 +12,14 @@ export const CartContainer = styled.aside<{ openCart: boolean }>`
   width: 486px;
   height: 1024px;
   z-index: 2;
+`;
+export const RelativePosition = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 `;
 export const CartTitle = styled.div`
   margin-top: 16px;
@@ -44,7 +50,7 @@ export const CloseCartIcon = styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-    opacity: 0.7;
+    opacity: 0.8;
     transition: 1000ms;
   }
   p {
@@ -58,7 +64,7 @@ export const CloseCartIcon = styled.div`
   }
 `;
 export const CartProductsContainer = styled.div`
-  max-height: 50%;
+  max-height: 56%;
   overflow-y: auto;
   z-index: 3;
   margin-top: 44px;
@@ -74,11 +80,14 @@ export const CartProductsContainer = styled.div`
     gap: 25px;
   }
 `;
-export const PurchaseInfoContainer = styled.div`
+export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
   display: flex;
   flex-direction: column;
   align-self: flex-end;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 85px;
   div {
     display: flex;
     justify-content: space-between;
@@ -92,12 +101,13 @@ export const PurchaseInfoContainer = styled.div`
     }
   }
   button {
-    cursor: pointer;
+    cursor: ${({ notEmptyCart }) => (notEmptyCart ? "pointer" : "not-allowed")};
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${color.black};
+    opacity: ${({ notEmptyCart }) => (notEmptyCart ? 1 : 0.8)};
     width: 486px;
     height: 97px;
     &:hover {

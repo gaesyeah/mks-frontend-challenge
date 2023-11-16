@@ -21,14 +21,14 @@ export const ImageContainer = styled.div`
     object-fit: cover;
   }
 `;
-export const ProductInfoContainer = styled.div`
+export const ProductInfoContainer = styled.div<{ onCart: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80px;
   button {
-    cursor: pointer;
+    cursor: ${({ onCart }) => (onCart ? "not-allowed" : "pointer")};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,7 +36,7 @@ export const ProductInfoContainer = styled.div`
     border: none;
     position: absolute;
     bottom: 0;
-    background-color: ${color.blue};
+    background-color: ${({ onCart }) => (onCart ? color.gray : color.blue)};
     width: 100%;
     height: 32px;
     border-radius: 0px 0px 10px 10px;
@@ -48,7 +48,7 @@ export const ProductInfoContainer = styled.div`
       color: ${color.white};
     }
     &:hover {
-      opacity: 0.7;
+      opacity: ${({ onCart }) => (onCart ? "unset" : 0.8)};
       transition: 1000ms;
     }
   }

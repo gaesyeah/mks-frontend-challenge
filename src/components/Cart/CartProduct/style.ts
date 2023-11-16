@@ -109,7 +109,7 @@ export const RemoveFromCartIcon = styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-    opacity: 0.7;
+    opacity: 0.8;
     transition: 1000ms;
   }
   p {

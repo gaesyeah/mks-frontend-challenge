@@ -16,9 +16,11 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
   const { cartProducts, setCartProducts } =
     useContext(CartContext) ?? undefinedCartContext;
 
+  const onCart = cartProducts.products.some(
+    (cartProduct) => cartProduct.id === id
+  );
   const addToCart = () => {
-    if (cartProducts.products.find((cartProduct) => cartProduct.id === id))
-      return;
+    if (onCart) return;
     setCartProducts((previous) => ({
       products: [...previous.products, { ...product }],
     }));
@@ -29,7 +31,7 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
       <ImageContainer>
         <img src={photo} alt={`product ${id}`}></img>
       </ImageContainer>
-      <ProductInfoContainer>
+      <ProductInfoContainer onCart={onCart}>
         <Info>
           <p>{name}</p>
           <div>
@@ -38,7 +40,7 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
         </Info>
         <Description>{description}</Description>
         <button onClick={addToCart}>
-          <p>COMPRAR</p>
+          <p>{onCart ? "NO CARRINHO" : "COMPRAR"}</p>
         </button>
       </ProductInfoContainer>
     </StyledProduct>
