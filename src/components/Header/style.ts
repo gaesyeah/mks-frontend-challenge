@@ -16,17 +16,17 @@ export const HeaderContainer = styled.header`
 `;
 export const LogoContainer = styled.div`
   margin-left: 60px;
-  h1{
+  h1 {
     font-size: 40px;
     font-weight: 600;
     line-height: 19px;
     letter-spacing: 0px;
     color: ${color.white};
-    span{
+    span {
       font-size: 20px;
       font-weight: 300;
-    };
-  };
+    }
+  }
 `;
 export const CartButtonContainer = styled.div`
   cursor: pointer;
@@ -39,11 +39,11 @@ export const CartButtonContainer = styled.div`
   border-radius: 8px;
   background-color: ${color.white};
   margin-right: 60px;
-  &:hover{
+  &:hover {
     opacity: 0.9;
     transition: 1000ms;
   }
-  p{
+  p {
     font-size: 18px;
     font-weight: 700;
     line-height: 22px;
@@ -55,4 +55,4 @@ export const CartButtonContainer = styled.div`
 export const CartIcon = styled(TiShoppingCart)`
   color: ${color.black};
   font-size: 22px;
-`
+`;

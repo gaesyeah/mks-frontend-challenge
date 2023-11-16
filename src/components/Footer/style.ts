@@ -10,8 +10,8 @@ export const FooterContainer = styled.footer`
   height: 34px;
   margin-top: 34px;
   width: 100%;
-  background-color: #EEEEEE;
-  p{
+  background-color: #eeeeee;
+  p {
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
