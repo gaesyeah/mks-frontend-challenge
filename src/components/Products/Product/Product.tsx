@@ -20,7 +20,6 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
     if (cartProducts.products.find((cartProduct) => cartProduct.id === id))
       return;
     setCartProducts((previous) => ({
-      ...previous,
       products: [...previous.products, { ...product }],
     }));
   };
