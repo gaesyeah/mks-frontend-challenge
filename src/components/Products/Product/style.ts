@@ -79,6 +79,7 @@ export const Info = styled.div`
     height: 26px;
     border-radius: 4px;
     p {
+      overflow: hidden;
       max-width: auto;
       min-height: auto;
       font-size: 15px;

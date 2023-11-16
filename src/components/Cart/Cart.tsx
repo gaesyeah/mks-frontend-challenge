@@ -47,7 +47,7 @@ const Cart = () => {
             <p>Total:</p>
             <p>R${finalPrice}</p>
           </div>
-          <button onClick={() => notEmptyCart && buyCartProducts}>
+          <button onClick={() => notEmptyCart && buyCartProducts()}>
             <p>{notEmptyCart ? "FINALIZAR COMPRA" : "CARRINHO VAZIO"}</p>
           </button>
         </PurchaseInfoContainer>

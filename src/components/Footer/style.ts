@@ -11,6 +11,7 @@ export const FooterContainer = styled.footer`
   margin-top: 34px;
   width: 100%;
   background-color: #eeeeee;
+  z-index: 2;
   p {
     font-size: 12px;
     font-weight: 400;

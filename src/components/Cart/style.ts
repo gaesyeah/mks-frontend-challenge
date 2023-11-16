@@ -1,7 +1,11 @@
 import color from "../../constants/colors";
 import styled from "styled-components";
+import { minWidth } from "../../constants/media";
 
 export const CartContainer = styled.aside<{ openCart: boolean }>`
+  @media (max-width: ${minWidth}) {
+    width: 90%;
+  }
   background-color: ${color.blue};
   display: flex;
   position: fixed;
@@ -10,7 +14,7 @@ export const CartContainer = styled.aside<{ openCart: boolean }>`
   right: ${({ openCart }) => (openCart ? "0" : "-486")}px;
   box-shadow: -5px 0px 6px 0px #00000021;
   width: 486px;
-  height: 1024px;
+  height: 100vh;
   z-index: 2;
 `;
 export const RelativePosition = styled.div`
@@ -30,6 +34,9 @@ export const CartTitle = styled.div`
   height: 70px;
   padding: 40px;
   h3 {
+    @media (max-width: ${minWidth}) {
+      margin-left: unset;
+    }
     margin-left: 12px;
     font-size: 27px;
     font-weight: 700;
@@ -64,12 +71,18 @@ export const CloseCartIcon = styled.div`
   }
 `;
 export const CartProductsContainer = styled.div`
-  max-height: 56%;
+  @media (max-width: ${minWidth}) {
+    max-height: 57%;
+  }
+  max-height: 62%;
   overflow-y: auto;
   z-index: 3;
   margin-top: 44px;
   ul {
-    margin-left: 3px;
+    @media (max-width: ${minWidth}) {
+      width: unset;
+    }
+    margin-left: 6px;
     padding-top: 6px;
     padding-right: 6px;
     box-sizing: content-box;
@@ -87,8 +100,10 @@ export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
   width: 100%;
   position: absolute;
   bottom: 0;
-  margin-bottom: 85px;
   div {
+    @media (max-width: ${minWidth}) {
+      padding: 40px;
+    }
     display: flex;
     justify-content: space-between;
     padding: 50px;
@@ -101,6 +116,9 @@ export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
     }
   }
   button {
+    @media (max-width: ${minWidth}) {
+      height: 67px;
+    }
     cursor: ${({ notEmptyCart }) => (notEmptyCart ? "pointer" : "not-allowed")};
     border: none;
     display: flex;
@@ -108,13 +126,16 @@ export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
     justify-content: center;
     background-color: ${color.black};
     opacity: ${({ notEmptyCart }) => (notEmptyCart ? 1 : 0.8)};
-    width: 486px;
+    width: 100%;
     height: 97px;
     &:hover {
       opacity: 0.8;
       transition: 1000ms;
     }
     p {
+      @media (max-width: ${minWidth}) {
+        font-size: 20px;
+      }
       font-size: 28px;
       font-weight: 700;
       line-height: 15px;

@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import {
+  FlexContainer,
   Price,
   Quantity,
   QuantityContainer,
@@ -60,22 +61,24 @@ const CartProductComponent: FC<{
         </div>
         <p>{name}</p>
       </View>
-      <QuantityContainer>
-        <Quantity>Qtd:</Quantity>
-        <div>
-          <button onClick={() => qtd > 1 && updatePrice("sub")}>
-            <p>-</p>
-          </button>
-          <p>{qtd}</p>
-          <button onClick={() => updatePrice("sum")}>
-            <p>+</p>
-          </button>
-        </div>
-      </QuantityContainer>
-      <Price>R${finalPrice}</Price>
-      <RemoveFromCartIcon onClick={removeProductFromCart}>
-        <p>x</p>
-      </RemoveFromCartIcon>
+      <FlexContainer>
+        <QuantityContainer>
+          <Quantity>Qtd:</Quantity>
+          <div>
+            <button onClick={() => qtd > 1 && updatePrice("sub")}>
+              <p>-</p>
+            </button>
+            <p>{qtd}</p>
+            <button onClick={() => updatePrice("sum")}>
+              <p>+</p>
+            </button>
+          </div>
+        </QuantityContainer>
+        <Price>R${finalPrice}</Price>
+        <RemoveFromCartIcon onClick={removeProductFromCart}>
+          <p>x</p>
+        </RemoveFromCartIcon>
+      </FlexContainer>
     </StyledCartProduct>
   );
 };

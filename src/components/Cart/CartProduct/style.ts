@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import color from "../../../constants/colors";
+import { minWidth } from "../../../constants/media";
 
 export const StyledCartProduct = styled.li`
+  @media (max-width: ${minWidth}) {
+    width: 250px;
+    height: 220px;
+    flex-direction: column;
+  }
   position: relative;
   display: flex;
   align-items: center;
@@ -15,7 +21,15 @@ export const StyledCartProduct = styled.li`
 export const View = styled.div`
   display: flex;
   align-items: center;
+  width: unset;
+  @media (max-width: ${minWidth}) {
+    flex-direction: column;
+    width: 100%;
+  }
   div {
+    @media (max-width: ${minWidth}) {
+      height: 100px;
+    }
     height: 60px;
     position: relative;
     img {
@@ -25,10 +39,18 @@ export const View = styled.div`
     }
   }
   p {
+    @media (max-width: ${minWidth}) {
+      font-size: 16px;
+      width: 100%;
+      margin-right: unset;
+      margin-left: unset;
+      display: flex;
+      justify-content: center;
+    }
     margin-right: -8px;
+    margin-left: 7px;
     display: flex;
     align-items: center;
-    margin-left: 7px;
     width: 100px;
     height: 33px;
     overflow-y: auto;
@@ -39,12 +61,31 @@ export const View = styled.div`
     color: ${color.gray};
   }
 `;
+export const FlexContainer = styled.div`
+  @media (max-width: ${minWidth}) {
+    width: 100%;
+  }
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 export const QuantityContainer = styled.div`
+  @media (max-width: ${minWidth}) {
+    margin-bottom: unset;
+  }
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   width: 50px;
   div {
+    @media (max-width: ${minWidth}) {
+      height: 34px;
+      width: 97px;
+      font-size: 20px;
+      line-height: 24px;
+      margin-left: 25px;
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,6 +100,10 @@ export const QuantityContainer = styled.div`
     border-radius: 4px;
     button {
       p {
+        @media (max-width: ${minWidth}) {
+          font-size: 24px;
+          line-height: 30px;
+        }
         margin-top: -1px;
       }
       cursor: pointer;
@@ -74,14 +119,25 @@ export const QuantityContainer = styled.div`
       }
     }
     button:nth-child(1) {
+      @media (max-width: ${minWidth}) {
+        margin-left: 6px;
+        padding-right: 11px;
+      }
       border-right: 1px solid ${color.lightGray};
     }
     button:nth-child(3) {
+      @media (max-width: ${minWidth}) {
+        margin-right: 6px;
+        padding-left: 11px;
+      }
       border-left: 1px solid ${color.lightGray};
     }
   }
 `;
 export const Quantity = styled.p`
+  @media (max-width: ${minWidth}) {
+    display: none;
+  }
   margin-bottom: 4px;
   font-size: 5px;
   font-weight: 400;
@@ -90,6 +146,13 @@ export const Quantity = styled.p`
   color: ${color.black};
 `;
 export const Price = styled.p`
+  @media (max-width: ${minWidth}) {
+    color: ${color.white};
+    background-color: ${color.gray};
+    padding: 9.5px;
+    border-radius: 6px;
+    margin-right: 25px;
+  }
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
@@ -97,6 +160,11 @@ export const Price = styled.p`
   color: ${color.black};
 `;
 export const RemoveFromCartIcon = styled.div`
+  @media (max-width: ${minWidth}) {
+    top: 13px;
+    right: 13px;
+    background-color: unset;
+  }
   cursor: pointer;
   position: absolute;
   top: -5px;
@@ -113,6 +181,10 @@ export const RemoveFromCartIcon = styled.div`
     transition: 1000ms;
   }
   p {
+    @media (max-width: ${minWidth}) {
+      font-size: 42px;
+      color: ${color.black};
+    }
     margin-bottom: 2px;
     margin-left: 1px;
     text-align: center;
