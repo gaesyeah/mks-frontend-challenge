@@ -20,7 +20,7 @@ const Cart = () => {
     setCartProducts({ products: [] });
     setFinalPrice(0);
   };
-  const notEmptyCart = cartProducts.products.length > 0;
+  const emptyCart = !(cartProducts.products.length > 0);
 
   return (
     <CartContainer openCart={openCart}>
@@ -42,13 +42,13 @@ const Cart = () => {
             ))}
           </ul>
         </CartProductsContainer>
-        <PurchaseInfoContainer notEmptyCart={notEmptyCart}>
+        <PurchaseInfoContainer>
           <div>
             <p>Total:</p>
             <p>R${finalPrice}</p>
           </div>
-          <button onClick={() => notEmptyCart && buyCartProducts()}>
-            <p>{notEmptyCart ? "FINALIZAR COMPRA" : "CARRINHO VAZIO"}</p>
+          <button disabled={emptyCart} onClick={buyCartProducts}>
+            <p>{emptyCart ? "CARRINHO VAZIO" : "FINALIZAR COMPRA"}</p>
           </button>
         </PurchaseInfoContainer>
       </RelativePosition>

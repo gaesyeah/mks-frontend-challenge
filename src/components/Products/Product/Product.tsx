@@ -37,7 +37,7 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
       <ImageContainer>
         <img src={photo} alt={`product ${id}`}></img>
       </ImageContainer>
-      <ProductInfoContainer onCart={onCart}>
+      <ProductInfoContainer>
         <Info>
           <p>{name}</p>
           <div>
@@ -45,7 +45,7 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
           </div>
         </Info>
         <Description>{description}</Description>
-        <button onClick={addToCart}>
+        <button disabled={onCart} onClick={addToCart}>
           <p>{onCart ? "NO CARRINHO" : "COMPRAR"}</p>
         </button>
       </ProductInfoContainer>

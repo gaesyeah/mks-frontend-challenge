@@ -93,7 +93,7 @@ export const CartProductsContainer = styled.div`
     gap: 25px;
   }
 `;
-export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
+export const PurchaseInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-end;
@@ -119,15 +119,18 @@ export const PurchaseInfoContainer = styled.div<{ notEmptyCart: boolean }>`
     @media (max-width: ${minWidth}) {
       height: 67px;
     }
-    cursor: ${({ notEmptyCart }) => (notEmptyCart ? "pointer" : "not-allowed")};
+    cursor: pointer;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${color.black};
-    opacity: ${({ notEmptyCart }) => (notEmptyCart ? 1 : 0.8)};
     width: 100%;
     height: 97px;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
     &:hover {
       opacity: 0.8;
       transition: 1000ms;

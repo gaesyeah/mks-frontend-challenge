@@ -65,7 +65,7 @@ const CartProductComponent: FC<{
         <QuantityContainer>
           <Quantity>Qtd:</Quantity>
           <div>
-            <button onClick={() => qtd > 1 && updatePrice("sub")}>
+            <button disabled={qtd === 1} onClick={() => updatePrice("sub")}>
               <p>-</p>
             </button>
             <p>{qtd}</p>

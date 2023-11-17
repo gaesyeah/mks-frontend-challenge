@@ -93,12 +93,17 @@ export const QuantityContainer = styled.div`
     font-weight: 400;
     line-height: 10px;
     letter-spacing: 0em;
-    color: ${color.black};
     width: 50px;
     height: 19px;
     border: 1px solid ${color.lightGray};
     border-radius: 4px;
     button {
+      &:disabled {
+        cursor: not-allowed;
+        &:hover {
+          color: ${color.black};
+        }
+      }
       p {
         @media (max-width: ${minWidth}) {
           font-size: 24px;
@@ -107,6 +112,7 @@ export const QuantityContainer = styled.div`
         margin-top: -1px;
       }
       cursor: pointer;
+      color: ${color.black};
       display: flex;
       align-items: center;
       justify-content: center;

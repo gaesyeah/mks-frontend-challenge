@@ -6,7 +6,7 @@ import ProductComponent from "./Product/Product";
 const ProductsContainer = () => {
   const {
     isLoading,
-    /* error, */
+    error,
     data,
   }: { data?: Products; error: Error | null; isLoading: boolean } = useQuery(
     "repoData",
@@ -15,6 +15,13 @@ const ProductsContainer = () => {
         "https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=50&sortBy=id&orderBy=ASC"
       ).then((res) => res.json())
   );
+
+  if (error)
+    return (
+      <StyledProductsContainer>
+        <h5>Houve um erro ao dar fetch nos produtos</h5>
+      </StyledProductsContainer>
+    );
 
   return (
     <StyledProductsContainer>
