@@ -4,7 +4,11 @@ import { Products } from "../../vite-env";
 import ProductComponent from "./Product/Product";
 
 const ProductsContainer = () => {
-  const { /* isLoading, error, */ data }: { data?: Products } = useQuery(
+  const {
+    isLoading,
+    error,
+    data,
+  }: { data?: Products; error: Error | null; isLoading: boolean } = useQuery(
     "repoData",
     () =>
       fetch(
@@ -15,7 +19,11 @@ const ProductsContainer = () => {
   return (
     <StyledProductsContainer>
       {data?.products.map((product) => (
-        <ProductComponent key={product.id} product={product} />
+        <ProductComponent
+          key={product.id}
+          product={product}
+          isLoading={isLoading}
+        />
       ))}
     </StyledProductsContainer>
   );

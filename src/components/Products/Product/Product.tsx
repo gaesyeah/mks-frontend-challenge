@@ -10,8 +10,12 @@ import {
 import CartContext, {
   undefinedCartContext,
 } from "../../../contexts/CartContext";
+import Skeleton from "react-loading-skeleton";
 
-const ProductComponent: FC<{ product: Product }> = ({ product }) => {
+const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
+  product,
+  isLoading,
+}) => {
   const { photo, name, id, description, price } = product;
   const { cartProducts, setCartProducts } =
     useContext(CartContext) ?? undefinedCartContext;
@@ -26,7 +30,9 @@ const ProductComponent: FC<{ product: Product }> = ({ product }) => {
     }));
   };
 
-  return (
+  return isLoading ? (
+    <Skeleton />
+  ) : (
     <StyledProduct>
       <ImageContainer>
         <img src={photo} alt={`product ${id}`}></img>
