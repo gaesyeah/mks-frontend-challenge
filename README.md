@@ -8,6 +8,7 @@ Este projeto consiste em uma aplicação front-end para exibir a lista de produt
 
 - Clone o repositório
 - Instale as dependências com npm install
+- Renomeie o arquivo .env.example para .env e insira a URL da API
 - Execute o comando npm run dev para iniciar a aplicação localmente
 
 ## Funcionalidades
