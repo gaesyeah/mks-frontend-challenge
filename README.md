@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# Desafio Front-end de Consumo de API - Loja Virtual
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
 
-Currently, two official plugins are available:
+Este projeto consiste em uma aplicação front-end para exibir a lista de produtos de uma loja virtual, consumindo uma API REST de produtos. A aplicação também inclui um carrinho que permite adicionar produtos e ajustar a quantidade de cada item selecionado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Como rodar localmente?
 
-## Expanding the ESLint configuration
+- Clone o repositório
+- Instale as dependências com npm install
+- Execute o comando npm run dev para iniciar a aplicação localmente
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Funcionalidades
 
-- Configure the top-level `parserOptions` property like this:
+`Loja`
+A lista de produtos é obtida da API, com um efeito de loading usando shimmer/skeleton.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+`Carrinho`
+O carrinho exibe todos os produtos selecionados, permitindo ajustar a quantidade de cada item.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Testes Unitários
+
+Utiliza Jest e a testing-library para testes unitários. Execute os testes com o comando npm test.
+
+## Deploy
+
+A aplicação foi deployada no ambiente Vercel e está acessível em **https://mks-frontend-challenge-snowy.vercel.app/**.
+
+## Design
+
+O design da loja foi baseado no Figma fornecido, utilizando o design system incluso, incluindo a fonte sugerida.
+
+## Considerações Finais
+
+Este projeto foi desenvolvido seguindo as diretrizes do desafio, utilizando as tecnologias solicitadas e garantindo a clareza do código, testabilidade e reutilização. Agradeço pela oportunidade e estou à disposição para qualquer esclarecimento adicional.
