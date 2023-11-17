@@ -4,6 +4,7 @@ import Cart from "../Cart";
 import { generateProduct } from "../../../test/factories/product.factory";
 import ProductsContainer from "../../Products/ProductsContainer";
 import renderComponent from "../../../test/renderComponent";
+import Header from "../../Header/Header";
 
 jest.mock("../../../api/api", () => ({
   fetchData: jest.fn(),
@@ -62,5 +63,30 @@ describe("CartContainer", () => {
     expect(
       screen.queryByTestId(`cartProduct ${product1.id}`)
     ).not.toBeInTheDocument();
+  });
+  it("should show the Cart when the user clicks on the cart Icon", () => {
+    renderComponent(
+      <>
+        <Header />
+        <Cart />
+      </>
+    );
+
+    fireEvent.click(screen.getByTestId("openCart"));
+    expect(screen.getByTestId("cartContainer")).toHaveStyle({ right: "0px" });
+  });
+  it("should hide the Cart when the user clicks on X icon", () => {
+    renderComponent(
+      <>
+        <Header />
+        <Cart />
+      </>
+    );
+
+    fireEvent.click(screen.getByTestId("openCart"));
+    fireEvent.click(screen.getByTestId("closeCart"));
+    expect(screen.getByTestId("cartContainer")).toHaveStyle({
+      right: "-486px",
+    });
   });
 });

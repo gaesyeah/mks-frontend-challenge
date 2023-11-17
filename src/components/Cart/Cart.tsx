@@ -23,11 +23,14 @@ const Cart = () => {
   const emptyCart = !(cartProducts.products.length > 0);
 
   return (
-    <CartContainer openCart={openCart}>
+    <CartContainer data-testid="cartContainer" openCart={openCart}>
       <RelativePosition>
         <CartTitle>
           <h3>Carrinho de Compras</h3>
-          <CloseCartIcon onClick={() => setOpenCart((previous) => !previous)}>
+          <CloseCartIcon
+            data-testid="closeCart"
+            onClick={() => setOpenCart(false)}
+          >
             <p>x</p>
           </CloseCartIcon>
         </CartTitle>

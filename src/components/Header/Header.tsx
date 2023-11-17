@@ -19,7 +19,10 @@ const Header = () => {
         </h1>
       </LogoContainer>
 
-      <CartButtonContainer onClick={() => setOpenCart((previous) => !previous)}>
+      <CartButtonContainer
+        data-testid="openCart"
+        onClick={() => setOpenCart(true)}
+      >
         <CartIcon />
         <p>{cartProducts.products.length}</p>
       </CartButtonContainer>
