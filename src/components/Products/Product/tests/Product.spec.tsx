@@ -12,11 +12,13 @@ describe("Product", () => {
     fireEvent.click(screen.getByTestId(`buyProduct ${product.id}`));
     expect(screen.getByText("NO CARRINHO")).toBeInTheDocument();
   });
-  it("should render the Skeleton/loading if while the API request doesnt end", () => {
+  it("should not render the Skeleton/loading if the API already responded", () => {
     const product = generateProduct("celular");
     renderComponent(
-      <ProductComponent key={product.id} product={product} isLoading={true} />
+      <ProductComponent key={product.id} product={product} isLoading={false} />
     );
-    expect(screen.getByTestId("loading")).toBeInTheDocument();
+    expect(
+      screen.queryByTestId(`loading ${product.id}`)
+    ).not.toBeInTheDocument();
   });
 });

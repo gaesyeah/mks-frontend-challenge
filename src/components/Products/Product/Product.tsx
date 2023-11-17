@@ -39,7 +39,14 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
     height: number;
   }): ReactNode => {
     if (isLoading)
-      return <Skeleton variant="rounded" width={width} height={height} />;
+      return (
+        <Skeleton
+          data-testid={`loading ${id}`}
+          variant="rounded"
+          width={width}
+          height={height}
+        />
+      );
     return tag;
   };
 
