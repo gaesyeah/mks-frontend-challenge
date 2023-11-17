@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { Product } from "../../../vite-env";
 import {
   Description,
@@ -29,42 +29,51 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
       products: [...previous.products, { ...product }],
     }));
   };
+  const returnTag = ({
+    tag,
+    width,
+    height,
+  }: {
+    tag: ReactNode;
+    width: number;
+    height: number;
+  }): ReactNode => {
+    if (isLoading)
+      return <Skeleton variant="rounded" width={width} height={height} />;
+    return tag;
+  };
 
   return (
     <StyledProduct>
       <ImageContainer>
-        {isLoading ? (
-          <Skeleton
-            data-testid="loading"
-            variant="rounded"
-            width={218}
-            height={150}
-          />
-        ) : (
-          <img src={photo} alt={`product ${id}`}></img>
-        )}
+        {returnTag({
+          tag: <img src={photo} alt={`product ${id}`}></img>,
+          width: 218,
+          height: 150,
+        })}
       </ImageContainer>
       <ProductInfoContainer>
         <Info>
-          {isLoading ? (
-            <Skeleton variant="rounded" width={100} height={26} />
-          ) : (
-            <p>{name}</p>
-          )}
-
-          {isLoading ? (
-            <Skeleton variant="rounded" width={67} height={26} />
-          ) : (
-            <div>
-              <p>R${price.replace(".00", "")}</p>
-            </div>
-          )}
+          {returnTag({
+            tag: <p>{name}</p>,
+            width: 100,
+            height: 26,
+          })}
+          {returnTag({
+            tag: (
+              <div>
+                <p>R${price.replace(".00", "")}</p>
+              </div>
+            ),
+            width: 67,
+            height: 26,
+          })}
         </Info>
-        {isLoading ? (
-          <Skeleton variant="rounded" width={194} height={38} />
-        ) : (
-          <Description>{description}</Description>
-        )}
+        {returnTag({
+          tag: <Description>{description}</Description>,
+          width: 194,
+          height: 38,
+        })}
         <button
           data-testid={`buyProduct ${id}`}
           disabled={isLoading || onCart}
