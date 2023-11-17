@@ -34,7 +34,12 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
     <StyledProduct>
       <ImageContainer>
         {isLoading ? (
-          <Skeleton variant="rounded" width={218} height={150} />
+          <Skeleton
+            data-testid="loading"
+            variant="rounded"
+            width={218}
+            height={150}
+          />
         ) : (
           <img src={photo} alt={`product ${id}`}></img>
         )}
