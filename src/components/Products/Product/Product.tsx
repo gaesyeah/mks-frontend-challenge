@@ -10,7 +10,7 @@ import {
 import CartContext, {
   undefinedCartContext,
 } from "../../../contexts/CartContext";
-import Skeleton from "react-loading-skeleton";
+import { Skeleton } from "@mui/material";
 
 const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
   product,
@@ -30,27 +30,44 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
     }));
   };
 
-  return isLoading ? (
-    <Skeleton />
-  ) : (
+  return (
     <StyledProduct>
       <ImageContainer>
-        <img src={photo} alt={`product ${id}`}></img>
+        {isLoading ? (
+          <Skeleton variant="rounded" width={218} height={150} />
+        ) : (
+          <img src={photo} alt={`product ${id}`}></img>
+        )}
       </ImageContainer>
       <ProductInfoContainer>
         <Info>
-          <p>{name}</p>
-          <div>
-            <p>R${price.replace(".00", "")}</p>
-          </div>
+          {isLoading ? (
+            <Skeleton variant="rounded" width={100} height={26} />
+          ) : (
+            <p>{name}</p>
+          )}
+
+          {isLoading ? (
+            <Skeleton variant="rounded" width={67} height={26} />
+          ) : (
+            <div>
+              <p>R${price.replace(".00", "")}</p>
+            </div>
+          )}
         </Info>
-        <Description>{description}</Description>
+        {isLoading ? (
+          <Skeleton variant="rounded" width={194} height={38} />
+        ) : (
+          <Description>{description}</Description>
+        )}
         <button
           data-testid={`buyProduct ${id}`}
-          disabled={onCart}
+          disabled={isLoading || onCart}
           onClick={addToCart}
         >
-          <p>{onCart ? "NO CARRINHO" : "COMPRAR"}</p>
+          <p>
+            {isLoading ? "CARREGANDO..." : onCart ? "NO CARRINHO" : "COMPRAR"}
+          </p>
         </button>
       </ProductInfoContainer>
     </StyledProduct>
