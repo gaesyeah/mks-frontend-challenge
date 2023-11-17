@@ -1,7 +1,6 @@
 import { StyledProductsContainer } from "./style";
 import ProductComponent from "./Product/Product";
 import { fetchData } from "../../api/api";
-import { mockProducts } from "../../constants/mockProducts";
 import LoadingProducts from "../LoadingProducts/LoadingProducts";
 
 const ProductsContainer = () => {
