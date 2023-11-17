@@ -45,7 +45,7 @@ const Cart = () => {
         <PurchaseInfoContainer>
           <div>
             <p>Total:</p>
-            <p data-testid="price">R${finalPrice}</p>
+            <p data-testid="finalPrice">R${finalPrice}</p>
           </div>
           <button disabled={emptyCart} onClick={buyCartProducts}>
             <p>{emptyCart ? "CARRINHO VAZIO" : "FINALIZAR COMPRA"}</p>

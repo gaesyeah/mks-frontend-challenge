@@ -65,17 +65,27 @@ const CartProductComponent: FC<{
         <QuantityContainer>
           <Quantity>Qtd:</Quantity>
           <div>
-            <button disabled={qtd === 1} onClick={() => updatePrice("sub")}>
+            <button
+              data-testid={`decrease ${id}`}
+              disabled={qtd === 1}
+              onClick={() => updatePrice("sub")}
+            >
               <p>-</p>
             </button>
-            <p>{qtd}</p>
-            <button onClick={() => updatePrice("sum")}>
+            <p data-testid={`qtd ${qtd}`}>{qtd}</p>
+            <button
+              data-testid={`increase ${id}`}
+              onClick={() => updatePrice("sum")}
+            >
               <p>+</p>
             </button>
           </div>
         </QuantityContainer>
-        <Price>R${finalPrice}</Price>
-        <RemoveFromCartIcon onClick={removeProductFromCart}>
+        <Price data-testid={`price ${id}`}>R${finalPrice}</Price>
+        <RemoveFromCartIcon
+          data-testid={`remove ${id}`}
+          onClick={removeProductFromCart}
+        >
           <p>x</p>
         </RemoveFromCartIcon>
       </FlexContainer>
