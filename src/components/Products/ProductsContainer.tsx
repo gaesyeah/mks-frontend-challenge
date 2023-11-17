@@ -6,7 +6,7 @@ import ProductComponent from "./Product/Product";
 const ProductsContainer = () => {
   const {
     isLoading,
-    error,
+    /* error, */
     data,
   }: { data?: Products; error: Error | null; isLoading: boolean } = useQuery(
     "repoData",
