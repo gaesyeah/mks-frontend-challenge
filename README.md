@@ -20,7 +20,7 @@ O carrinho exibe todos os produtos selecionados, permitindo ajustar a quantidade
 
 ## Testes Unitários
 
-Utiliza Jest e a testing-library para testes unitários. Execute os testes com o comando npm test.
+Utiliza Jest e a testing-library para testes unitários. Execute os testes com o comando npm run test.
 
 ## Deploy
 
