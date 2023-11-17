@@ -54,7 +54,7 @@ const CartProductComponent: FC<{
   };
 
   return (
-    <StyledCartProduct>
+    <StyledCartProduct data-testid={`cartProduct ${id}`}>
       <View>
         <div>
           <img src={photo} alt={`product ${id}`}></img>

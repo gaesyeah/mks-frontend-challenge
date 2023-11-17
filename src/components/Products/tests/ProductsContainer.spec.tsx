@@ -1,21 +1,13 @@
-import { render, RenderResult, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ProductsContainer from "../ProductsContainer";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactNode } from "react";
 import * as api from "../../../api/api";
 import { generateProduct } from "../../../test/factories/product.factory";
+import renderComponent from "../../../test/renderComponent";
 
 jest.mock("../../../api/api", () => ({
   fetchData: jest.fn(),
 }));
 const renderDataSpy = jest.spyOn(api, "fetchData");
-
-const renderComponent = (children: ReactNode): RenderResult => {
-  const queryClient = new QueryClient();
-  return render(
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-};
 
 describe("ProductsContainer", () => {
   it('should render "Houve um erro ao dar fetch nos produtos" when fetchData returns an error', () => {
@@ -43,13 +35,14 @@ describe("ProductsContainer", () => {
     ).toBeInTheDocument();
   });
   it("should render the product when everything is ok", () => {
-    const productName = "celular";
+    const product = generateProduct();
     renderDataSpy.mockReturnValue({
       isError: false,
       isLoading: false,
-      data: { products: [generateProduct(productName)], count: 1 },
+      data: { products: [product], count: 1 },
     });
     renderComponent(<ProductsContainer />);
-    expect(screen.getByText(productName)).toBeInTheDocument();
+    expect(screen.getByText(product.name)).toBeInTheDocument();
+    expect(screen.getByText("COMPRAR")).toBeInTheDocument();
   });
 });

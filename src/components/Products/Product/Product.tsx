@@ -45,7 +45,11 @@ const ProductComponent: FC<{ product: Product; isLoading: boolean }> = ({
           </div>
         </Info>
         <Description>{description}</Description>
-        <button disabled={onCart} onClick={addToCart}>
+        <button
+          data-testid={`buyProduct ${id}`}
+          disabled={onCart}
+          onClick={addToCart}
+        >
           <p>{onCart ? "NO CARRINHO" : "COMPRAR"}</p>
         </button>
       </ProductInfoContainer>
