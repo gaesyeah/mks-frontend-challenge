@@ -9,6 +9,6 @@ export const fetchData = (
   isLoading: boolean;
 } => {
   return useQuery("repoData", () =>
-    fetch(`${import.meta.env.VITE_API_URL}${params}`).then((res) => res.json())
+    fetch(`${import.meta.env.VITE_API_URL}/${params}`).then((res) => res.json())
   );
 };
