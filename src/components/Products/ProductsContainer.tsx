@@ -1,25 +1,23 @@
-import { useQuery } from "react-query";
 import { StyledProductsContainer } from "./style";
-import { Products } from "../../vite-env";
 import ProductComponent from "./Product/Product";
+import { fetchData } from "../../api/api";
 
 const ProductsContainer = () => {
-  const {
-    isLoading,
-    error,
-    data,
-  }: { data?: Products; error: Error | null; isLoading: boolean } = useQuery(
-    "repoData",
-    () =>
-      fetch(
-        "https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=50&sortBy=id&orderBy=ASC"
-      ).then((res) => res.json())
+  const { data, isError, isLoading } = fetchData(
+    "products?page=1&rows=50&sortBy=id&orderBy=ASC"
   );
 
-  if (error)
+  if (isError)
     return (
       <StyledProductsContainer>
         <h5>Houve um erro ao dar fetch nos produtos</h5>
+      </StyledProductsContainer>
+    );
+
+  if (data?.count === 0)
+    return (
+      <StyledProductsContainer>
+        <h5>Não há nenhum produto cadastrado em nosso site no momento</h5>
       </StyledProductsContainer>
     );
 
