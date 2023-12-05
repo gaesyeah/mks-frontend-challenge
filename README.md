@@ -1,8 +1,12 @@
 # Desafio Front-end de Consumo de API - Loja Virtual
 
-## Descrição
+## Como funciona?
 
 Este projeto consiste em uma aplicação front-end para exibir a lista de produtos de uma loja virtual, consumindo uma API REST de produtos. A aplicação também inclui um carrinho que permite adicionar produtos e ajustar a quantidade de cada item selecionado.
+
+## Deploy
+
+A aplicação foi deployada no ambiente Vercel e está acessível em **https://mks-frontend-challenge-snowy.vercel.app/**.
 
 ## Como rodar localmente?
 
@@ -14,7 +18,7 @@ Este projeto consiste em uma aplicação front-end para exibir a lista de produt
 ## Funcionalidades
 
 `Loja`
-A lista de produtos é obtida da API, com um efeito de loading usando shimmer/skeleton.
+A lista de produtos é obtida da API, com um efeito de loading usando shimmer/skeleton da material ui.
 
 `Carrinho`
 O carrinho exibe todos os produtos selecionados, permitindo ajustar a quantidade de cada item.
@@ -22,10 +26,6 @@ O carrinho exibe todos os produtos selecionados, permitindo ajustar a quantidade
 ## Testes Unitários
 
 Utiliza Jest e a testing-library para testes unitários. Execute os testes com o comando npm run test.
-
-## Deploy
-
-A aplicação foi deployada no ambiente Vercel e está acessível em **https://mks-frontend-challenge-snowy.vercel.app/**.
 
 ## Design
 
